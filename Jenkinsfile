@@ -5,7 +5,7 @@ node {
   }
 
   stage ('build') {
-    echo "build"
+    echo "build this repos"
   }
   
   stage ('test') {
@@ -15,4 +15,5 @@ node {
    stage ('publish') {
     echo "publish"
   }
+  
 }
