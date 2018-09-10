@@ -1,4 +1,7 @@
 node {
+  stage ('init') {
+   echo "Initialize"
+  }
   stage ('build') {
     echo "build"
   }
