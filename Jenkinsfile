@@ -5,7 +5,7 @@ node {
   }
 
   stage ('compile') {
-    echo "build this repos bbbb"
+    echo "Compile this repos bbbb"
   }
   
   stage ('test') {
