@@ -4,7 +4,7 @@ node {
    echo "Initialize"
   }
 
-  stage ('build') {
+  stage ('compile') {
     echo "build this repos bbbb"
   }
   
