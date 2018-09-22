@@ -13,7 +13,7 @@ node {
   } 
   
    stage ('publish') {
-    echo "publish check me out"
+    echo "publish "
   }
   
 }
