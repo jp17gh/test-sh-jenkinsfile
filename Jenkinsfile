@@ -1,5 +1,8 @@
 node {
 
+  for(e in env){
+        echo e + " is " + ${e}  
+  }
   
   triggers {
      issueCommentTrigger('whatever ....'); 
