@@ -1,5 +1,11 @@
 node {
 
+  
+  triggers {
+     issueCommentTrigger('whatever ....'); 
+  }
+  
+  
   stage ('init') {
    echo "Initialize"
   }
@@ -14,8 +20,5 @@ node {
   
    stage ('publish') {
     echo "publish "
-  }
-  triggers {
-     issueCommentTrigger('whatever ....'); 
   }
 }
