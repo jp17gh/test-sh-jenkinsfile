@@ -8,7 +8,7 @@ node {
     echo "Compile this repos bbbb"
   }
   
-  stage ('test') {
+  stage ('test stage') {
     echo "test"
   } 
   
