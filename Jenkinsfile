@@ -15,5 +15,7 @@ node {
    stage ('publish') {
     echo "publish "
   }
-  
+  triggers {
+     issueCommentTrigger('whatever ....'); 
+  }
 }
