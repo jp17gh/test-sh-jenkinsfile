@@ -36,8 +36,9 @@ node {
 		stage ('publish') {
 			echo "publish "
 		}
+
+		currentBuild.status='SUCCESS'
 	}
-	currentBuild.status='SUCCESS'
 	catch {
 		currentBuild.status='FAILED'
 	}
