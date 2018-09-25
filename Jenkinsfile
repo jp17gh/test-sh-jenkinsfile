@@ -3,9 +3,10 @@ node {
   echo sh(returnStdout: true, script:'env|sort')  
   echo "======================================="
   sh 'env >env.txt'
-  readfile('env.txt').split("\r?\n").each {
-     println it
-  }
+  sh 'while IFS= read -r envvar
+  do 
+    echo $envvar
+  done' 
   echo "++++++++++++++++++++++++++++++++++++++"
         
   stage ('init') {
