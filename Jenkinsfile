@@ -1,4 +1,7 @@
 node {
+  step([$class: 'StashNotofier'])
+        try {
+        
         
   echo sh(returnStdout: true, script:'env|sort')  
   echo "======================================="
@@ -33,4 +36,8 @@ node {
    stage ('publish') {
     echo "publish "
   }
+                }
+        catch {
+        
+        }
 }
