@@ -1,12 +1,12 @@
 node {
         
   echo sh(returnStdout: true, script:'env|sort')  
-  echo "=======================================")
+  echo "======================================="
   sh 'env >env.txt'
   reafile('env.txt').split("\r?\n").each {
      println it
   }
-  echo "++++++++++++++++++++++++++++++++++++++")
+  echo "++++++++++++++++++++++++++++++++++++++"
         
   stage ('init') {
    echo "Initialize"
