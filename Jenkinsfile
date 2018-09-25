@@ -1,7 +1,7 @@
 node {
 
   for ( e in env ){
-        echo  " e is " + ${e}  
+        echo  " e is + ${e} " 
   }
   
   triggers {
