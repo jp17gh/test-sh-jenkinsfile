@@ -1,5 +1,5 @@
 node {
-	step([$class: 'StashNotofier'])
+	step([$class: 'StashNotifier'])
 	try {
 		echo sh(returnStdout: true, script:'env|sort')  
 		echo "======================================="
