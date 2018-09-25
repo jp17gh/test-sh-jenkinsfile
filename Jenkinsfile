@@ -1,7 +1,4 @@
 node {
-  step([$class: 'StashNotofier'])
-        try {
-        
         
   echo sh(returnStdout: true, script:'env|sort')  
   echo "======================================="
@@ -25,19 +22,34 @@ node {
     }
   }
 
-  stage ('compile') {
-    echo "Compile this repos bbbb"
-  }
-  
-  stage ('test stage') {
-    echo "test"
-  } 
-  
-   stage ('publish') {
-    echo "publish "
-  }
-                }
-        catch {
-        
+//  stage ('compile') {
+//    echo "Compile this repos bbbb"
+//  }
+
+
+    stage('Clone repository') {
+        // This is the key - how to sync code form github or other DVCS
+        checkout scm
+    }
+
+    stage('Build image') {
+        app = docker.build("hellonode")
+    }
+
+    stage('Test image') {
+        /* here we can add TCs based on mocha or selenium
+        app.inside {
+            sh 'echo "Tests passed"'
         }
+    }
+
+    stage('Push image') {
+        /* Push the docker image to dockerhub with two tags:
+         * First, the incremental build number from Jenkins
+         * Second, the 'latest' tag - to reuse layers defined in the Dockerfile */
+        docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+            app.push("${env.BUILD_NUMBER}")
+            app.push("latest")
+        }
+    }
 }
