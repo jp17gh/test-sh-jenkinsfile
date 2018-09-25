@@ -9,12 +9,14 @@ node {
   echo "++++++++++++++++++++++++++++++++++++++"
         
   stage ('init') {
-   echo "Initialize"
-   @NonCPS
-   def printParams() {
-     env.getEnvironment().each { name, value -> println "Name: $name -> Value $value" }
-   }
-   printParams()
+  script {
+        sh 'env > env.txt'
+        String[] envs = readFile('env.txt').split("\r?\n")
+
+        for(String vars: envs){
+            println(vars)
+        }
+    }
   }
 
   stage ('compile') {
