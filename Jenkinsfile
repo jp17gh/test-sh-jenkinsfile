@@ -39,7 +39,12 @@ node {
 
 		currentBuild.status='SUCCESS'
 	}
-	catch {
+	catch (err) {
 		currentBuild.status='FAILED'
+		throw err
 	}
+	finally {
+
+	}
+	step([$class: 'StashNotifier'])
 }
