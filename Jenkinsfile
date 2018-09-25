@@ -1,8 +1,6 @@
 node {
-
-  for ( e in env ){
-        echo  " e is + ${e} " 
-  }
+        
+  echo sh(returnStdout: true, script:'env')  
   
   stage ('init') {
    echo "Initialize"
