@@ -1,43 +1,44 @@
 node {
-  step([$class: 'StashNotofier'])
-        try {
-        
-        
-  echo sh(returnStdout: true, script:'env|sort')  
-  echo "======================================="
-  sh 'env >env.txt'
-  sh '''
-  while IFS= read -r envvar
-  do 
-    echo $envvar
-  done
-  ''' 
-  echo "++++++++++++++++++++++++++++++++++++++"
-        
-  stage ('init') {
-  script {
-        sh 'env > env.txt'
-        String[] envs = readFile('env.txt').split("\r?\n")
+	step([$class: 'StashNotofier'])
+	try {
+		echo sh(returnStdout: true, script:'env|sort')  
+		echo "======================================="
+		sh 'env >env.txt'
+		
+		sh '''
+		while IFS= read -r envvar
+		do 
+			echo $envvar
+		done
+		''' 
+		
+		echo "++++++++++++++++++++++++++++++++++++++"
 
-        for(String vars: envs){
-            println(vars)
-        }
-    }
-  }
+		stage ('init') {
+			script {
+				sh 'env > env.txt'
+				String[] envs = readFile('env.txt').split("\r?\n")
 
-  stage ('compile') {
-    echo "Compile this repos bbbb"
-  }
-  
-  stage ('test stage') {
-    echo "test"
-  } 
-  
-   stage ('publish') {
-    echo "publish "
-  }
-                }
-        catch {
-        
-        }
+				for(String vars: envs){
+					println(vars)
+				}
+			}
+		}
+
+		stage ('compile') {
+		echo "Compile this repos bbbb"
+		}
+
+		stage ('test stage') {
+			echo "test"
+		} 
+
+		stage ('publish') {
+			echo "publish "
+		}
+	}
+	currentBuild.status='SUCCESS'
+	catch {
+		currentBuild.status='FAILED'
+	}
 }
