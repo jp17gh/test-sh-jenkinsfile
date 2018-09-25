@@ -4,11 +4,6 @@ node {
         echo  " e is + ${e} " 
   }
   
-  triggers {
-     issueCommentTrigger('whatever ....'); 
-  }
-  
-  
   stage ('init') {
    echo "Initialize"
   }
