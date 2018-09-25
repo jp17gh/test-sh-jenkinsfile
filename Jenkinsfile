@@ -10,6 +10,11 @@ node {
         
   stage ('init') {
    echo "Initialize"
+   @NonCPS
+   def printParams() {
+     env.getEnvironment().each { name, value -> println "Name: $name -> Value $value" }
+   }
+   printParams()
   }
 
   stage ('compile') {
