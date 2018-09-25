@@ -3,7 +3,7 @@ node {
   echo sh(returnStdout: true, script:'env|sort')  
   echo "======================================="
   sh 'env >env.txt'
-  reafile('env.txt').split("\r?\n").each {
+  readfile('env.txt').split("\r?\n").each {
      println it
   }
   echo "++++++++++++++++++++++++++++++++++++++"
